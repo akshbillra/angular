@@ -1,0 +1,62 @@
+
+<div *ngIf="!param" id="myDIV" class="wrapper" style="background-image: url('/assets/auth/images/bg-registration-form-1.jpg');">
+  <div class="inner">
+    <div class="image-holder">
+      <img src="../../../assets/auth/images/registration-form-1.jpg" alt="">
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <h3>ADD NEW CONTACT</h3>
+
+        <div class="form-wrapper">
+        <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"  required minlength="3">
+        <i class="zmdi zmdi-email"  *ngIf="firstName.invalid && (firstName.dirty || firstName.touched) " [ngClass] = "'error'">
+          <small class="text-danger" *ngIf="firstName.errors.required">firstName is required</small>
+          <small class="text-danger" *ngIf="firstName.errors.minlength">
+          firstName must be at least 3 characters long.
+          </small></i>
+        </div>
+
+        <div class="form-wrapper">
+        <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName" required minlength="3">
+        <i class="zmdi zmdi-email" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" [ngClass] = "'error'">
+          <small class="text-danger" *ngIf="lastName.errors.required">lastName is required</small>
+          <small class="text-danger" *ngIf="lastName.errors.minlength">
+          lastName must be at least 3 characters long.
+          </small>
+      </i></div>
+
+
+
+      <div class="form-wrapper">
+        <input type="email" placeholder="Email Address" class="form-control" formControlName="email" required email>
+        <i class="zmdi zmdi-email" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <small class="text-danger" *ngIf="email.errors.required">email is required</small>
+          <small class="text-danger" *ngIf="email.invalid && !email.errors.required">enter valid email address</small>
+        </i>
+      </div>
+
+
+      <div class="form-wrapper">
+        <input type="tel" placeholder="phone number" class="form-control" formControlName="number" required minlength="3" maxlength="10">
+        <i class="zmdi zmdi-email" *ngIf="number.invalid && (number.dirty || number.touched)" [ngClass] = "'error'">
+          <small class="text-danger" *ngIf="number.errors.required">number is required</small>
+          <small class="text-danger" *ngIf="number.errors.minlength">
+            number must be at least 3 characters long.
+          </small>
+          <small class="text-danger" *ngIf="number.errors.maxlength">
+            number must be less than 11 digits
+          </small>
+      </i></div>
+
+      <button style="float:left;width:50%" type="submit">ADD
+        <i class="zmdi zmdi-arrow-right"></i>
+      </button>
+      <button style="float:right;width:30%" routerLink="/dashboard/users">BACK
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
